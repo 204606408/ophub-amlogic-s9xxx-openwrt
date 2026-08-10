@@ -54,7 +54,11 @@ rm -rf package/luci-theme-aurora package/luci-app-aurora-config
 git clone --depth=1 -b master https://github.com/eamonxg/luci-theme-aurora.git package/luci-theme-aurora
 git clone --depth=1 -b master https://github.com/eamonxg/luci-app-aurora-config.git package/luci-app-aurora-config
 
-# Set Aurora as the default LuCI theme (optional, remove if you want to keep Bootstrap)
+# Add luci-app-mini-diskmanager
+rm -rf package/luci-app-mini-diskmanager
+git clone --depth=1 -b master https://github.com/4IceG/luci-app-mini-diskmanager.git package/luci-app-mini-diskmanager
+
+# Set Aurora as the default LuCI theme
 sed -i "s/option mediaurlbase .*/option mediaurlbase 'luci-theme-aurora'/" feeds/luci/modules/luci-base/root/etc/config/luci
 #
 # Apply patches
