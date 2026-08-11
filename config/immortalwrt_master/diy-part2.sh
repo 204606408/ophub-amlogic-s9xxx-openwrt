@@ -56,13 +56,16 @@ git clone --depth=1 -b master https://github.com/eamonxg/luci-app-aurora-config.
 
 # Add luci-app-mini-diskmanager
 rm -rf package/luci-app-mini-diskmanager
-git clone --depth=1 -b master https://github.com/4IceG/luci-app-mini-diskmanager.git package/luci-app-mini-diskmanager
+git clone --depth=1 -b master https://github.com/4IceG/luci-app-mini-diskmanager.git temp_minidisk
+cp -r temp_minidisk/luci-app-mini-diskmanager package/
+rm -rf temp_minidisk
 
-# Add luci-app-wolultra
-rm -rf package/luci-app-wolultra
-git clone --depth=1 -b main https://github.com/VIKINGYFY/packages.git temp_wolultra
-cp -r temp_wolultra/luci-app-wolultra package/
-rm -rf temp_wolultra
+# Add luci-app-wolultra and luci-app-homeproxy (from same repo)
+rm -rf package/luci-app-wolultra package/luci-app-homeproxy
+git clone --depth=1 -b main https://github.com/VIKINGYFY/packages.git temp_viking
+cp -r temp_viking/luci-app-wolultra package/
+cp -r temp_viking/luci-app-homeproxy package/
+rm -rf temp_viking
 
 # Set Aurora as the default LuCI theme
 sed -i "s/option mediaurlbase .*/option mediaurlbase 'luci-theme-aurora'/" feeds/luci/modules/luci-base/root/etc/config/luci
