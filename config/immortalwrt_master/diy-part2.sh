@@ -49,6 +49,11 @@ fi
 rm -rf package/luci-app-amlogic
 git clone -b main https://github.com/ophub/luci-app-amlogic.git package/luci-app-amlogic
 #
+# Add luci-theme-aurora and configuration tool
+rm -rf package/luci-theme-aurora package/luci-app-aurora-config
+git clone --depth=1 -b master https://github.com/eamonxg/luci-theme-aurora.git package/luci-theme-aurora
+git clone --depth=1 -b master https://github.com/eamonxg/luci-app-aurora-config.git package/luci-app-aurora-config
+#
 # Apply patches
 # git apply ../config/patches/{0001*,0002*}.patch --directory=feeds/luci
 #
